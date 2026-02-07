@@ -9,13 +9,6 @@ public class Student {
 
     }
 
-    public Student(int studID, String studName, String studProgram){
-        this.studID = studID;
-        this.studName = studName;
-        this.studProgram = studProgram;
-
-    }
-
     public int getStudID(){
         return studID;
     }
@@ -41,7 +34,8 @@ public class Student {
     }
 
     public void display(){
-        System.out.printf("\nStudent ID: %d", studID);
+        System.out.println("\nStudent Details:");
+        System.out.printf("Student ID: %d", studID);
         System.out.printf("\nStudent Name: %s", studName);
         System.out.printf("\nStudent Program: %s\n", studProgram);
     }

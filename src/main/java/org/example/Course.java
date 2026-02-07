@@ -9,13 +9,6 @@ public class Course {
 
     }
 
-    public Course(String courseCode, String courseName, String courseProgram){
-        this.courseCode = courseCode;
-        this.courseName = courseName;
-        this.courseProgram = courseProgram;
-
-    }
-
     public String getCourseID(){
         return courseCode;
     }
@@ -37,11 +30,12 @@ public class Course {
     }
 
     public void setCourseProgram(String courseProgram){
-        this.courseName = courseProgram;
+        this.courseProgram = courseProgram;
     }
 
     public void display(){
-        System.out.printf("\nCourse Code: %s", courseCode);
+        System.out.println("\nCourse Details:");
+        System.out.printf("Course Code: %s", courseCode);
         System.out.printf("\nCourse Name: %s", courseName);
         System.out.printf("\nCourse Program: %s\n", courseProgram);
     }

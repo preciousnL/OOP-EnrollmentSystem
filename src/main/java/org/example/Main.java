@@ -3,6 +3,7 @@ package org.example;
 public class Main {
 
     public static void main(String[] args) {
+
         Student student = new Student();
         student.setStudID(2026123456);
         student.setStudName("John Doe");
@@ -18,6 +19,7 @@ public class Main {
         subject.setCourseName("Integrative Programming");
         subject.setCourseProgram("Information Technology");
 
+        System.out.println("\nENROLLMENT SYSTEM");
         student.display();
         student1.display();
         subject.display();

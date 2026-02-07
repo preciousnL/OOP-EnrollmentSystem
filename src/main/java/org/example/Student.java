@@ -35,8 +35,8 @@ public class Student {
 
     public void display(){
         System.out.println("\nStudent Details:");
-        System.out.printf("Student ID: %d", studID);
-        System.out.printf("\nStudent Name: %s", studName);
-        System.out.printf("\nStudent Program: %s\n", studProgram);
+        System.out.printf("Student ID: %d", getStudID());
+        System.out.printf("\nStudent Name: %s", getStudName());
+        System.out.printf("\nStudent Program: %s\n", getStudProgram());
     }
 }

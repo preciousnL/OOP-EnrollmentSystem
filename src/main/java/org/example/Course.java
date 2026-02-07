@@ -9,7 +9,7 @@ public class Course {
 
     }
 
-    public String getCourseID(){
+    public String getCourseCode(){
         return courseCode;
     }
 
@@ -35,8 +35,8 @@ public class Course {
 
     public void display(){
         System.out.println("\nCourse Details:");
-        System.out.printf("Course Code: %s", courseCode);
-        System.out.printf("\nCourse Name: %s", courseName);
-        System.out.printf("\nCourse Program: %s\n", courseProgram);
+        System.out.printf("Course Code: %s", getCourseCode());
+        System.out.printf("\nCourse Name: %s", getCourseName());
+        System.out.printf("\nCourse Program: %s\n", getCourseProgram());
     }
 }

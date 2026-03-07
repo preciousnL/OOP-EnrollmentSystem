@@ -35,17 +35,17 @@ public class CourseRegistration {
         ans = scan.nextLine();
         if (ans.equalsIgnoreCase("yes")){
             for(int i = 0; i < courses.size(); i++){
-                System.out.println(courses.get(i).getCourseName());
-                System.out.println(courses.get(i).getCourseCode());
-                System.out.println(courses.get(i).getCourseProgram());
+                System.out.println("\nCourse ID: " + courses.get(i).getCourseName());
+                System.out.println("Course Name: " + courses.get(i).getCourseCode());
+                System.out.println("Program: " + courses.get(i).getCourseProgram());
             }
         } else if (ans.equalsIgnoreCase("no")){
             System.out.print("Enter special number: ");
             index = scan.nextInt();
             if (index <= courses.size()){
-                System.out.println(courses.get(index).getClass());
-                System.out.println(courses.get(index).getCourseCode());
-                System.out.println(courses.get(index).getCourseProgram());
+                System.out.println("\nCourse ID: " + courses.get(index).getClass());
+                System.out.println("Course Name: " + courses.get(index).getCourseCode());
+                System.out.println("Program: " + courses.get(index).getCourseProgram());
             } else {
                 System.out.println("Invalid input. Try again.");
             }

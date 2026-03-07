@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class StudentRegistration {
-    private ArrayList<Student> students = new ArrayList();
+    private ArrayList<Student> students = new ArrayList<>();
     static Scanner scan = new Scanner(System.in);
     static int index;
     static String name;
@@ -13,39 +13,37 @@ public class StudentRegistration {
     static String program;
     static String ans;
 
-    //create
-    public void addStudent(Student student){
+    // create
+    public void addStudent(Student student) {
         students.add(student);
-        for (int i = 0; i < students.size(); i++) {
-            if(students.size() - 1 == i){
-                System.out.printf("Your special number is %s", i);
-                System.out.println(" ");
-            }
-        }
+        System.out.printf("Your special number is %d%n", students.size() - 1);
     }
 
-    //read
-    public void displayAll(){
-        if (students.isEmpty()){
+    // read
+    public void displayAll() {
+        if (students.isEmpty()) {
             System.out.println("\nNo created data yet.");
             return;
         }
 
-        System.out.print("\nDo you want to read all? (Yes/ No): ");
+        System.out.print("\nDo you want to read all? (Yes/No): ");
         ans = scan.nextLine();
-        if (ans.equalsIgnoreCase("yes")){
-            for(int i = 0; i < students.size(); i++){
-                System.out.println(students.get(i).getStudID());
-                System.out.println(students.get(i).getStudName());
-                System.out.println(students.get(i).getStudProgram());
+
+        if (ans.equalsIgnoreCase("yes")) {
+            for (int i = 0; i < students.size(); i++) {
+                System.out.println("\nSpecial Number: " + i);
+                System.out.println("Student ID: " + students.get(i).getId());
+                System.out.println("Student Name: " + students.get(i).getName());
+                System.out.println("Program: " + students.get(i).getStudProgram());
             }
-        } else if (ans.equalsIgnoreCase("no")){
+        } else if (ans.equalsIgnoreCase("no")) {
             System.out.print("Enter special number: ");
             index = scan.nextInt();
-            if (index <= students.size()){
-                System.out.println(students.get(index).getStudID());
-                System.out.println(students.get(index).getStudName());
-                System.out.println(students.get(index).getStudProgram());
+
+            if (index >= 0 && index < students.size()) {
+                System.out.println("\nStudent ID: " + students.get(index).getId());
+                System.out.println("Student Name: " + students.get(index).getName());
+                System.out.println("Program: " + students.get(index).getStudProgram());
             } else {
                 System.out.println("Invalid input. Try again.");
             }
@@ -54,8 +52,8 @@ public class StudentRegistration {
         }
     }
 
-    //update
-    public void updateStudent(){
+    // update
+    public void updateStudent() {
         if (students.isEmpty()) {
             System.out.println("\nNo created data yet.");
             return;
@@ -63,20 +61,31 @@ public class StudentRegistration {
 
         System.out.print("\nEnter special number: ");
         index = scan.nextInt();
+        scan.nextLine();
 
-        System.out.print("Name: ");
-        name = scan.nextLine();
-        System.out.print("Age: ");
-        id = scan.nextInt();
+        if (index >= 0 && index < students.size()) {
+            System.out.print("Name: ");
+            name = scan.nextLine();
 
-        students.get(index).setStudName(name);
-        students.get(index).setStudID(id);
-        students.get(index).setStudProgram(program);
-        System.out.println("Update Successful!");
+            System.out.print("ID: ");
+            id = scan.nextInt();
+            scan.nextLine();
+
+            System.out.print("Program: ");
+            program = scan.nextLine();
+
+            students.get(index).setName(name);
+            students.get(index).setId(id);
+            students.get(index).setStudProgram(program);
+
+            System.out.println("Update Successful!");
+        } else {
+            System.out.println("Invalid input. Try again.");
+        }
     }
 
-    //delete
-    public void removeStudent(){
+    // delete
+    public void removeStudent() {
         if (students.isEmpty()) {
             System.out.println("\nNo created data yet.");
             return;
@@ -84,8 +93,12 @@ public class StudentRegistration {
 
         System.out.print("\nEnter special number: ");
         index = scan.nextInt();
-        students.remove(index);
-        System.out.println("Remove Successful!");
+
+        if (index >= 0 && index < students.size()) {
+            students.remove(index);
+            System.out.println("Remove Successful!");
+        } else {
+            System.out.println("Invalid input. Try again.");
+        }
     }
 }
-

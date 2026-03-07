@@ -1,7 +1,8 @@
 package org.example.model;
-import org.example.model.Student;
 import org.example.service.CourseRegistration;
 import org.example.service.StudentRegistration;
+import org.example.service.TuitionFeePayment;
+
 import java.util.*;
 
 public class Main {
@@ -20,6 +21,7 @@ public class Main {
             int sID;
             int choice;
             int ch;
+            String ans;
 
             System.out.println("\n1 - Register | 2 - Read | 3 - Update | 4 - Delete | 5 - Exit");
             System.out.print("What to do?: ");
@@ -29,7 +31,7 @@ public class Main {
 
                 //create
                 case 1:
-                    System.out.println("\n1 - Student | 2 - Course");
+                    System.out.println("\n1 - Student | 2 - Course ");
                     System.out.print("What do you want to register?: ");
                     ch = scan.nextInt();
 
@@ -43,11 +45,24 @@ public class Main {
                         System.out.print("Student Program: ");
                         sProgram = scan.nextLine();
 
-                        Student p = new Student();
-                        p.setStudID(sID);
-                        p.setStudName(sName);
+                        Student p = new Student(sID, sName);
+                        p.setId(sID);
+                        p.setName(sName);
                         p.setStudProgram(sProgram);
                         studentRegistration.addStudent(p);
+
+//                        while (true) {
+//                            System.out.print("Proceed to Tuition Fee Calculator? (Yes/ No): ");
+//                            ans = scan.nextLine();
+//                            if (ans.equalsIgnoreCase("yes")) {
+//                                TuitionFeePayment t = new TuitionFeePayment();
+//
+//                            } else if (ans.equalsIgnoreCase("no")) {
+//                                return;
+//                            } else {
+//                                System.out.println("\nInvalid input. Please type 'Yes or No' only.");
+//                            }
+//                        }
                     } else if (ch == 2){
                         scan.nextLine();
                         System.out.print("\nCourse Code: ");
@@ -62,6 +77,8 @@ public class Main {
                         c.setCourseName(cName);
                         c.setCourseProgram(cProgram);
                         courseRegistration.addCourse(c);
+                    } else if (ch == 3){
+                        break;
                     } else {
                         System.out.println("Invalid input. Try again.");
                     }
@@ -69,43 +86,52 @@ public class Main {
 
                 // read
                 case 2:
-                    System.out.println("\n1 - Student | 2 - Course");
-                    System.out.print("What do you want to read?: ");
-                    ch = scan.nextInt();
-                    if (ch == 1){
-                        studentRegistration.displayAll();
-                    } else if (ch == 2) {
-                        courseRegistration.displayAll();
-                    } else {
-                        System.out.println("Invalid input. Try again.");
+                    while (true){
+                        System.out.println("\n1 - Student | 2 - Course");
+                        System.out.print("What do you want to read?: ");
+                        ch = scan.nextInt();
+                        if (ch == 1){
+                            studentRegistration.displayAll();
+                        } else if (ch == 2) {
+                            courseRegistration.displayAll();
+                        } else {
+                            System.out.println("Invalid input. Try again.");
+                        }
+                        break;
                     }
                     break;
 
-                // update
+                    // update
                 case 3:
-                    System.out.println("\n1 - Student | 2 - Course");
-                    System.out.print("What do you want to update?: ");
-                    ch = scan.nextInt();
-                    if (ch == 1){
-                        studentRegistration.updateStudent();
-                    } else if (ch == 2) {
-                        courseRegistration.updateCourse();
-                    } else {
-                        System.out.println("Invalid input. Try again.");
+                    while (true){
+                        System.out.println("\n1 - Student | 2 - Course");
+                        System.out.print("What do you want to update?: ");
+                        ch = scan.nextInt();
+                        if (ch == 1) {
+                            studentRegistration.updateStudent();
+                        } else if (ch == 2) {
+                            courseRegistration.updateCourse();
+                        } else {
+                            System.out.println("Invalid input. Try again.");
+                        }
+                        break;
                     }
                     break;
 
                 // delete
                 case 4:
-                    System.out.println("\n1 - Student | 2 - Course");
-                    System.out.print("What do you want to remove?: ");
-                    ch = scan.nextInt();
-                    if (ch == 1){
-                        studentRegistration.removeStudent();
-                    } else if (ch == 2) {
-                        courseRegistration.removeCourse();
-                    } else {
-                        System.out.println("Invalid input. Try again.");
+                    while (true){
+                        System.out.println("\n1 - Student | 2 - Course");
+                        System.out.print("What do you want to remove?: ");
+                        ch = scan.nextInt();
+                        if (ch == 1) {
+                            studentRegistration.removeStudent();
+                        } else if (ch == 2) {
+                            courseRegistration.removeCourse();
+                        } else {
+                            System.out.println("Invalid input. Try again.");
+                        }
+                        break;
                     }
                     break;
 

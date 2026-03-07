@@ -1,28 +1,10 @@
 package org.example.model;
 
-public class Student {
-    private int studID;
-    private String studName;
+public class Student extends Person{
     private String studProgram;
 
-    public Student(){
-
-    }
-
-    public int getStudID(){
-        return studID;
-    }
-
-    public void setStudID(int studID){
-        this.studID = studID;
-    }
-
-    public String getStudName(){
-        return studName;
-    }
-
-    public void setStudName(String studName){
-        this.studName = studName;
+    public Student(int id, String name){
+        super (id, name);
     }
 
     public String getStudProgram(){
@@ -35,8 +17,8 @@ public class Student {
 
     public void display(){
         System.out.println("\nStudent Details:");
-        System.out.printf("Student ID: %d", getStudID());
-        System.out.printf("\nStudent Name: %s", getStudName());
+        System.out.printf("Student ID: %d", getId());
+        System.out.printf("\nStudent Name: %s", getName());
         System.out.printf("\nStudent Program: %s\n", getStudProgram());
     }
 }

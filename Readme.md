@@ -1,10 +1,24 @@
-# Inheritance
+# Abstraction
 
 -----
 **Author**: Precious Nicole Lasin
 
-**2. Description**: OOP Enrollment System | Inheritance | Output using setter and getter
+**Description**: OOP Enrollment System | Abstraction | Output using setter and getter
 
-![image2.png](src/main/resources/image/image2.png)
-![image3.png](src/main/resources/image/image3.png)
-![image4.png](src/main/resources/image/image4.png)
+**Screenshot**: Main.java
+![image5.png](src/main/resources/image/image5.png)
+
+**Screenshot**: Instructor.java
+![image6.png](src/main/resources/image/image6.png)
+
+**Screenshot**: Student.java
+![image7.png](src/main/resources/image/image7.png)
+
+**Screenshot**: Person.java
+![image8.png](src/main/resources/image/image8.png)
+
+**Screenshot**: Instructor output 
+[image9.png](src/main/resources/image/image9.png)
+
+**Screenshot**: Student output
+![image10.png](src/main/resources/image/image10.png)

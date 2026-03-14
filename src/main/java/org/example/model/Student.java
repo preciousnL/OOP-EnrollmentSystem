@@ -6,6 +6,10 @@ public class Student extends Person{
     private ArrayList<Course> courses = new ArrayList<>();
     private String studProgram;
 
+    public Student(){
+
+    }
+
     public Student(int id, String name, String program) {
         super(id, name);
         this.studProgram = program;
@@ -32,5 +36,9 @@ public class Student extends Person{
 
     public void enrollCourse(Course course) {
         courses.add(course);
+    }
+
+    public void mainTask(){
+        System.out.println("\nWelcome, dear student!");
     }
 }

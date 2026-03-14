@@ -1,12 +1,16 @@
 package org.example.model;
 
-public class Person {
+public abstract class Person {
     private int id;
     private String name;
 
     public Person (int studID, String studName){
         this.id = studID;
         this.name = studName;
+    }
+
+    public Person() {
+
     }
 
     public int getId(){
@@ -24,4 +28,6 @@ public class Person {
     public void setName(String name){
         this.name = name;
     }
+
+    public abstract void mainTask();
 }

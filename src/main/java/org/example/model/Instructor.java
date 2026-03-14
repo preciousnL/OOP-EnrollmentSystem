@@ -6,6 +6,10 @@ public class Instructor extends Person {
     private ArrayList<Course> courses = new ArrayList<>();
     private String course;
 
+    public Instructor(){
+
+    }
+
     public Instructor(int id, String name){
         super (id, name);
     }
@@ -16,5 +20,9 @@ public class Instructor extends Person {
 
     public void setCourse(String course){
         this.course = course;
+    }
+
+    public void mainTask(){
+        System.out.println("\nWelcome, professor!");
     }
 }

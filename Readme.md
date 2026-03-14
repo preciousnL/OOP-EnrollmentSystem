@@ -18,7 +18,7 @@
 ![image8.png](src/main/resources/image/image8.png)
 
 **Screenshot**: Instructor output 
-[image9.png](src/main/resources/image/image9.png)
+![image9.png](src/main/resources/image/image9.png)
 
 **Screenshot**: Student output
 ![image10.png](src/main/resources/image/image10.png)

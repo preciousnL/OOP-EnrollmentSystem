@@ -1,12 +1,19 @@
 package org.example.model;
 
 public class Course {
+
     private String courseCode;
     private String courseName;
     private String courseProgram;
+    private int units;
 
-    public Course(){
+    public Course(){}
 
+    public Course(String courseCode, String courseName, String courseProgram, int units){
+        this.courseCode = courseCode;
+        this.courseName = courseName;
+        this.courseProgram = courseProgram;
+        this.units = units;
     }
 
     public String getCourseCode(){
@@ -33,10 +40,11 @@ public class Course {
         this.courseProgram = courseProgram;
     }
 
-    public void display(){
-        System.out.println("\nCourse Details:");
-        System.out.printf("Course Code: %s", getCourseCode());
-        System.out.printf("\nCourse Name: %s", getCourseName());
-        System.out.printf("\nCourse Program: %s\n", getCourseProgram());
+    public int getUnits(){
+        return units;
+    }
+
+    public void setUnits(int units){
+        this.units = units;
     }
 }

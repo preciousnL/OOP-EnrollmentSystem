@@ -1,34 +1,21 @@
-
-
-
-
-
-
-
-
-
-
-
-
 package org.example.service;
 
 import org.example.model.Student;
 
 public class CampusRegistrar {
     private StudentRegistration registration;
-    private CourseReg courseReg;
+    private CourseRegistration courseRegistration;
 
-    public CampusRegistrar(StudentRegistration registration, CourseReg courseReg){
+    public CampusRegistrar(StudentRegistration registration, CourseRegistration courseRegistration) {
         this.registration = registration;
-        this.courseReg = courseReg;
+        this.courseRegistration = courseRegistration;
     }
 
-    public String saveStudent(Student student){
+    public void saveStudent(Student student) {
         registration.saveStudent(student);
-        return "Success";
     }
 
-    public void displayAllCourses(){
-        courseReg.displayAll();
+    public void displayAllCourses() {
+        courseRegistration.displayAll();
     }
 }

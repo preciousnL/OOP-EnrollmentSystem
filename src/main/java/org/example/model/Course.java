@@ -1,50 +1,40 @@
 package org.example.model;
 
 public class Course {
-
-    private String courseCode;
+    private String courseID;
     private String courseName;
-    private String courseProgram;
-    private int units;
+    private String program;
 
-    public Course(){}
+    public Course() {
+    }
 
-    public Course(String courseCode, String courseName, String courseProgram, int units){
-        this.courseCode = courseCode;
+    public Course(String courseID, String courseName, String program) {
+        this.courseID = courseID;
         this.courseName = courseName;
-        this.courseProgram = courseProgram;
-        this.units = units;
+        this.program = program;
     }
 
-    public String getCourseCode(){
-        return courseCode;
+    public String getcourseID() {
+        return courseID;
     }
 
-    public void setCourseCode(String courseCode){
-        this.courseCode = courseCode;
+    public void setCourseID(String courseID) {
+        this.courseID = courseID;
     }
 
-    public String getCourseName(){
+    public String getcourseName() {
         return courseName;
     }
 
-    public void setCourseName(String courseName){
+    public void setCourseName(String courseName) {
         this.courseName = courseName;
     }
 
-    public String getCourseProgram(){
-        return courseProgram;
+    public String getProgram() {
+        return program;
     }
 
-    public void setCourseProgram(String courseProgram){
-        this.courseProgram = courseProgram;
-    }
-
-    public int getUnits(){
-        return units;
-    }
-
-    public void setUnits(int units){
-        this.units = units;
+    public void setProgram(String program) {
+        this.program = program;
     }
 }

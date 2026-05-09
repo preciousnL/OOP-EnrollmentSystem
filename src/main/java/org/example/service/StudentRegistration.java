@@ -6,7 +6,7 @@ import org.example.model.Student;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class StudentRegistration implements StudentService {
+public class StudentRegistration implements IStudentService {
 
     private ArrayList<Student> students = new ArrayList<>();
 
@@ -14,20 +14,20 @@ public class StudentRegistration implements StudentService {
 
     static int index;
     static String name;
-    static int id;
+    static String id;
     static String program;
     static String ans;
 
     @Override
-    public void addStudent(Student student) {
+    public void saveStudent(Student student) {
 
         students.add(student);
 
-        System.out.printf("\nYour special number is %d%n", students.size());
+        System.out.printf("%nYour special number is %d%n", students.size());
     }
 
     @Override
-    public void displayStudent() {
+    public void displayAllStudent() {
 
         if (students.isEmpty()) {
 
@@ -46,23 +46,9 @@ public class StudentRegistration implements StudentService {
 
                 System.out.println("\n===================================================");
                 System.out.println("\nSpecial Number: " + (i + 1));
-                System.out.println("Student ID: " + students.get(i).getId());
-                System.out.println("Student Name: " + students.get(i).getName());
-                System.out.println("Program: " + students.get(i).getStudProgram());
-
-                System.out.println("\nStudent Enrolled Courses:");
-
-                if (students.get(i).getCourses().isEmpty()) {
-
-                    System.out.println("No enrolled subject.");
-
-                } else {
-
-                    for (Course course : students.get(i).getCourses()) {
-
-                        System.out.println("        - " + course.getCourseCode() + " : " + course.getCourseName());
-                    }
-                }
+                System.out.println("Student ID: " + students.get(i).getPersonID());
+                System.out.println("Student Name: " + students.get(i).getPersonName());
+                System.out.println("Program: " + students.get(i).getProgram());
 
                 System.out.println("\n===================================================");
             }
@@ -70,32 +56,16 @@ public class StudentRegistration implements StudentService {
         } else if (ans.equalsIgnoreCase("no")) {
 
             System.out.print("\nEnter special number: ");
-            index = scan.nextInt();
-            scan.nextLine();
+            index = Integer.parseInt(scan.nextLine());
 
             if (index - 1 >= 0 && index - 1 < students.size()) {
 
                 Student student = students.get(index - 1);
 
                 System.out.println("\n===================================================");
-                System.out.println("\nStudent ID: " + student.getId());
-                System.out.println("Student Name: " + student.getName());
-                System.out.println("Program: " + student.getStudProgram());
-
-                System.out.println("\nStudent Enrolled Courses:");
-
-                if (student.getCourses().isEmpty()) {
-
-                    System.out.println("None");
-
-                } else {
-
-                    for (Course course : student.getCourses()) {
-
-                        System.out.println("        - " + course.getCourseCode() + " : " + course.getCourseName());
-                    }
-                }
-
+                System.out.println("\nStudent ID: " + student.getPersonID());
+                System.out.println("Student Name: " + student.getPersonName());
+                System.out.println("Program: " + student.getProgram());
                 System.out.println("\n===================================================");
 
             } else {
@@ -120,8 +90,7 @@ public class StudentRegistration implements StudentService {
         }
 
         System.out.print("\nEnter special number: ");
-        index = scan.nextInt();
-        scan.nextLine();
+        index = Integer.parseInt(scan.nextLine());
 
         if (index - 1 >= 0 && index - 1 < students.size()) {
 
@@ -129,15 +98,14 @@ public class StudentRegistration implements StudentService {
             name = scan.nextLine();
 
             System.out.print("ID: ");
-            id = scan.nextInt();
-            scan.nextLine();
+            id = scan.nextLine();
 
             System.out.print("Program: ");
             program = scan.nextLine();
 
-            students.get(index - 1).setName(name);
-            students.get(index - 1).setId(id);
-            students.get(index - 1).setStudProgram(program);
+            students.get(index - 1).setPersonName(name);
+            students.get(index - 1).setPersonID(id);
+            students.get(index - 1).setProgram(program);
 
             System.out.println("\n===================================================");
             System.out.println("\nUpdate Successful!");
@@ -161,8 +129,7 @@ public class StudentRegistration implements StudentService {
         }
 
         System.out.print("\nEnter special number: ");
-        index = scan.nextInt();
-        scan.nextLine();
+        index = Integer.parseInt(scan.nextLine());
 
         if (index - 1 >= 0 && index - 1 < students.size()) {
 
@@ -179,22 +146,11 @@ public class StudentRegistration implements StudentService {
     }
 
     @Override
-    public Student getStudentBySpecialNumber(int specialNumber) {
-
-        if (specialNumber - 1 >= 0 && specialNumber - 1 < students.size()) {
-
-            return students.get(specialNumber - 1);
-        }
-
-        return null;
-    }
-
-    @Override
-    public Student getStudentById(int id) {
+    public Student getStudentById(String studentId) {
 
         for (Student student : students) {
 
-            if (student.getId() == id) {
+            if (student.getPersonID() != null && student.getPersonID().equals(studentId)) {
 
                 return student;
             }

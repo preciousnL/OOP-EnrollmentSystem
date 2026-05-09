@@ -3,19 +3,16 @@ package org.example.service;
 import org.example.model.Course;
 import java.util.ArrayList;
 
-public interface CourseService {
+public interface ICourseService {
+    void save(Course course);
 
-    void addCourse(Course course);
-
-    void displayCourse();
-
-    void displayAvailableCourses();
+    void displayAll();
 
     void updateCourse();
 
     void removeCourse();
 
-    Course getCourseByIndex(int index);
+    Course getCourseById(String courseId);
 
     ArrayList<Course> getAllCourses();
 }

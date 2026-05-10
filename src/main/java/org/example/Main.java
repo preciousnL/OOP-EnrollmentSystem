@@ -74,9 +74,24 @@ public class Main {
                                 Student s = new Student();
                                 s.mainTask();
 
-                                System.out.print("\nStudent ID: ");
-                                sID = scan.nextInt();
-                                scan.nextLine();
+                                sID = -1;
+                                boolean validId = false;
+                                while (!validId) {
+                                    try {
+                                        System.out.print("\nStudent ID: ");
+                                        sID = scan.nextInt();
+                                        scan.nextLine();
+                                        
+                                        if (studentRegistration.getStudentById(sID) != null) {
+                                            System.out.println("Student ID already exists. Please enter a different ID.");
+                                        } else {
+                                            validId = true;
+                                        }
+                                    } catch (java.util.InputMismatchException e) {
+                                        System.out.println("Invalid input. Please enter a numeric ID.");
+                                        scan.nextLine();
+                                    }
+                                }
 
                                 System.out.print("Student Name: ");
                                 sName = scan.nextLine();

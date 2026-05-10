@@ -96,9 +96,24 @@ public class StudentRegistration {
             System.out.print("\nName: ");
             name = scan.nextLine();
 
-            System.out.print("ID: ");
-            id = scan.nextInt();
-            scan.nextLine();
+            boolean validId = false;
+            while (!validId) {
+                try {
+                    System.out.print("ID: ");
+                    id = scan.nextInt();
+                    scan.nextLine();
+
+                    Student existing = getStudentById(id);
+                    if (existing != null && existing != students.get(index - 1)) {
+                        System.out.println("Student ID already exists. Please enter a different ID.");
+                    } else {
+                        validId = true;
+                    }
+                } catch (java.util.InputMismatchException e) {
+                    System.out.println("Invalid input. Please enter a numeric ID.");
+                    scan.nextLine();
+                }
+            }
 
             System.out.print("Program: ");
             program = scan.nextLine();

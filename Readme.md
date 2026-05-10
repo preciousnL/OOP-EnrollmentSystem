@@ -1,4 +1,4 @@
-# Interface-Driven Enrollment System
+# Interface
 
 -----
 **Author**: Precious Nicole Lasin

@@ -3,25 +3,21 @@ package org.example.model;
 import java.util.ArrayList;
 
 public class Instructor extends Person {
-    private ArrayList<Course> Courses = new ArrayList<>();
+    private ArrayList<Course> courses = new ArrayList<>();
 
     public Instructor() {
     }
 
-    public Instructor(String personID, String personName) {
-        super(personID, personName);
+    public Instructor(int id, String name) {
+        super(id, name);
     }
 
     public ArrayList<Course> getCourses() {
-        return Courses;
-    }
-
-    public void setCourses(ArrayList<Course> courses) {
-        this.Courses = courses;
+        return courses;
     }
 
     @Override
     public void mainTask() {
-        System.out.println("Welcome, professor!");
+        System.out.println("\nWelcome, professor!");
     }
 }

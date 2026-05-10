@@ -4,15 +4,11 @@ import org.example.model.Course;
 import java.util.ArrayList;
 
 public interface ICourseService {
-    void save(Course course);
-
-    void displayAll();
-
+    void addCourse(Course course);
+    void displayCourse();
+    void displayAvailableCourses();
     void updateCourse();
-
     void removeCourse();
-
-    Course getCourseById(String courseId);
-
+    Course getCourseByIndex(int index);
     ArrayList<Course> getAllCourses();
 }

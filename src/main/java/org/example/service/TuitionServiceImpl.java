@@ -1,34 +1,63 @@
 package org.example.service;
 
+import java.util.ArrayList;
+
 public class TuitionServiceImpl implements ITuitionService {
-    private double pricePerUnit = 1000.00; // As per TuitionFeePayment in diagram
-    private double balance = 0.0;
-    private double totalTuition = 0.0;
+
+    private ArrayList<Double> balances = new ArrayList<>();
+    private double pricePerUnit = 1000.00;
+    private double balance;
+    private double totalTuition;
 
     @Override
     public double calculateTuitionFee(int units, double discountRate) {
-        double baseFee = units * pricePerUnit;
-        double discount = baseFee * discountRate;
-        this.totalTuition = baseFee - discount;
-        this.balance = this.totalTuition;
-        return this.totalTuition;
+        this.totalTuition = units * pricePerUnit;
+        this.totalTuition = totalTuition - (totalTuition * discountRate);
+        balance = totalTuition;
+        balances.add(balance);
+        return totalTuition;
     }
 
     @Override
     public void makePayment(double amount) {
-        if (amount > 0) {
-            this.balance -= amount;
-            System.out.println("Payment of Php " + amount + " made successfully.");
+        if (balances.isEmpty()) {
+            System.out.println("\n===================================================");
+            System.out.println("\nNo Transaction Found.");
+        }
+
+        if (amount <= 0) {
+            System.out.println("\n===================================================");
+            System.out.println("\nInvalid payment amount.");
+            return;
+        }
+
+        balance -= amount;
+
+        if (balance < 0) {
+            balance = 0;
         }
     }
 
     @Override
     public double getRemainingBalance() {
-        return Math.max(0, balance);
+        if (balances.isEmpty()) {
+            System.out.println("\n===================================================");
+            System.out.println("\nNo Transaction Found.");
+        }
+        return balance;
     }
 
     @Override
     public boolean isFullyPaid() {
-        return balance <= 0 && totalTuition > 0;
+        if (balances.isEmpty()) {
+            System.out.println("\n===================================================");
+            System.out.println("\nNo Transaction Found.");
+        }
+        return balance <= 0;
+    }
+
+    @Override
+    public String displayTuitionFee(double totalTuition) {
+        return String.format("\nTotal Tuition Fee Amount: %.2f", totalTuition);
     }
 }

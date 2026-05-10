@@ -1,28 +1,30 @@
 package org.example.model;
 
 public class Course {
-    private String courseID;
+    private String courseCode;
     private String courseName;
-    private String program;
+    private String courseProgram;
+    private int units;
 
     public Course() {
     }
 
-    public Course(String courseID, String courseName, String program) {
-        this.courseID = courseID;
+    public Course(String courseCode, String courseName, String courseProgram, int units) {
+        this.courseCode = courseCode;
         this.courseName = courseName;
-        this.program = program;
+        this.courseProgram = courseProgram;
+        this.units = units;
     }
 
-    public String getcourseID() {
-        return courseID;
+    public String getCourseCode() {
+        return courseCode;
     }
 
-    public void setCourseID(String courseID) {
-        this.courseID = courseID;
+    public void setCourseCode(String courseCode) {
+        this.courseCode = courseCode;
     }
 
-    public String getcourseName() {
+    public String getCourseName() {
         return courseName;
     }
 
@@ -30,11 +32,19 @@ public class Course {
         this.courseName = courseName;
     }
 
-    public String getProgram() {
-        return program;
+    public String getCourseProgram() {
+        return courseProgram;
     }
 
-    public void setProgram(String program) {
-        this.program = program;
+    public void setCourseProgram(String courseProgram) {
+        this.courseProgram = courseProgram;
+    }
+
+    public int getUnits() {
+        return units;
+    }
+
+    public void setUnits(int units) {
+        this.units = units;
     }
 }

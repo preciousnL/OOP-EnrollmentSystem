@@ -1,26 +1,44 @@
 package org.example.model;
 
+import java.util.ArrayList;
+
 public class Student extends Person {
-    private String program;
+    private ArrayList<Course> courses = new ArrayList<>();
+    private String studProgram;
 
     public Student() {
     }
 
-    public Student(String personID, String personName, String program) {
-        super(personID, personName);
-        this.program = program;
+    public Student(int id, String name, String program) {
+        super(id, name);
+        this.studProgram = program;
     }
 
-    public String getProgram() {
-        return program;
+    public String getStudProgram() {
+        return studProgram;
     }
 
-    public void setProgram(String program) {
-        this.program = program;
+    public void setStudProgram(String studProgram) {
+        this.studProgram = studProgram;
+    }
+
+    public ArrayList<Course> getCourses() {
+        return courses;
+    }
+
+    public void enrollCourse(Course course) {
+        courses.add(course);
+    }
+
+    public void display() {
+        System.out.println("\nStudent Details:");
+        System.out.printf("Student ID: %d", getId());
+        System.out.printf("\nStudent Name: %s", getName());
+        System.out.printf("\nStudent Program: %s\n", getStudProgram());
     }
 
     @Override
     public void mainTask() {
-        System.out.println("Welcome, dear student!");
+        System.out.println("\nWelcome, dear student!");
     }
 }

@@ -2,6 +2,7 @@ package org.example.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.example.exceptions.SectionFullException;
 
 public class Section {
     private String sectionName;
@@ -50,5 +51,12 @@ public class Section {
 
     public void setEnrolledStudents(List<Student> enrolledStudents) {
         this.enrolledStudents = enrolledStudents;
+    }
+
+    public void enrollStudent(Student student) throws SectionFullException {
+        if (enrolledStudents.size() >= maxCapacity) {
+            throw new SectionFullException("Section " + sectionName + " has reached its maximum capacity of " + maxCapacity + ".");
+        }
+        enrolledStudents.add(student);
     }
 }

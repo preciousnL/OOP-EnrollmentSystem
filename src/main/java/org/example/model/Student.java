@@ -26,19 +26,7 @@ public class Student extends Person {
         return courses;
     }
 
-    public void enrollCourse(Course course) {
-        courses.add(course);
-    }
-
-    public void display() {
-        System.out.println("\nStudent Details:");
-        System.out.printf("Student ID: %d", getId());
-        System.out.printf("\nStudent Name: %s", getName());
-        System.out.printf("\nStudent Program: %s\n", getStudProgram());
-    }
-
-    @Override
-    public void mainTask() {
-        System.out.println("\nWelcome, dear student!");
+    public void setCourses(ArrayList<Course> courses) {
+        this.courses = courses;
     }
 }

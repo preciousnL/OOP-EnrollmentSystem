@@ -16,8 +16,7 @@ public class Instructor extends Person {
         return courses;
     }
 
-    @Override
-    public void mainTask() {
-        System.out.println("\nWelcome, professor!");
+    public void setCourses(ArrayList<Course> courses) {
+        this.courses = courses;
     }
 }

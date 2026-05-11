@@ -126,26 +126,39 @@ java org.example.Main
 ## Project Structure
 ```
 OOP-EnrollmentSystem/
-├── src/main/java/org/example/
-│   ├── Main.java
-│   ├── model/
-│   │   ├── Person.java
-│   │   ├── Student.java
-│   │   ├── Instructor.java
-│   │   ├── Course.java
-│   │   ├── Department.java
-│   │   └── Section.java
-│   ├── service/
-│   │   ├── IStudentService.java
-│   │   ├── ICourseService.java
-│   │   ├── IInstructorService.java
-│   │   ├── ITuitionService.java
-│   │   ├── IEnrollmentService.java
-│   │   ├── IDepartmentService.java
-│   │   ├── ISectionService.java
-│   │   └── [Implementation Classes]
-│   └── exceptions/
-│       └── SectionFullException.java
+├── src/
+│   ├── main/java/org/example/
+│   │   ├── Main.java
+│   │   ├── model/
+│   │   │   ├── Person.java
+│   │   │   ├── Student.java
+│   │   │   ├── Instructor.java
+│   │   │   ├── Course.java
+│   │   │   ├── Department.java
+│   │   │   └── Section.java
+│   │   ├── service/
+│   │   │   ├── IStudentService.java
+│   │   │   ├── ICourseService.java
+│   │   │   ├── IInstructorService.java
+│   │   │   ├── ITuitionService.java
+│   │   │   ├── IEnrollmentService.java
+│   │   │   ├── IDepartmentService.java
+│   │   │   ├── ISectionService.java
+│   │   │   └── [Implementation Classes]
+│   │   └── exceptions/
+│   │       └── SectionFullException.java
+│   └── test/java/org/example/
+│       └── service/
+│           ├── CourseRegistrationTest.java
+│           ├── StudentRegistrationTest.java
+│           ├── TuitionFeePaymentTest.java
+│           ├── DuplicateStudentIdTest.java
+│           ├── EnrollmentValidationTest.java
+│           ├── PaymentBalanceTest.java
+│           ├── SectionFullValidationTest.java
+│           ├── TuitionFeeCalculationTest.java
+│           └── RunTests.java
+├── pom.xml
 └── README.md
 ```
 

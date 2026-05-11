@@ -2,12 +2,14 @@ package org.example.model;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import org.example.exceptions.SectionFullException;
 
 public class Section {
     private String sectionName;
     private int maxCapacity;
     private Instructor instructor;
+    private Course course;
     private List<Student> enrolledStudents;
 
     public Section() {
@@ -18,6 +20,14 @@ public class Section {
         this.sectionName = sectionName;
         this.maxCapacity = maxCapacity;
         this.instructor = instructor;
+        this.enrolledStudents = new ArrayList<>();
+    }
+
+    public Section(String sectionName, int maxCapacity, Instructor instructor, Course course) {
+        this.sectionName = sectionName;
+        this.maxCapacity = maxCapacity;
+        this.instructor = instructor;
+        this.course = course;
         this.enrolledStudents = new ArrayList<>();
     }
 
@@ -43,6 +53,14 @@ public class Section {
 
     public void setInstructor(Instructor instructor) {
         this.instructor = instructor;
+    }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
     }
 
     public List<Student> getEnrolledStudents() {

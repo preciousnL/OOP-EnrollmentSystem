@@ -11,7 +11,7 @@ public class EnrollmentServiceImpl implements IEnrollmentService {
 
     private IStudentService studentService;
     private ICourseService courseService;
-    private Map<String, List<Course>> studentEnrollments = new HashMap<>();
+    private Map<Integer, List<Course>> studentEnrollments = new HashMap<>();
 
     public EnrollmentServiceImpl() {
     }
@@ -24,25 +24,25 @@ public class EnrollmentServiceImpl implements IEnrollmentService {
     @Override
     public void enrollCourse(Student student, Course course) {
         if (student != null && course != null) {
-            studentEnrollments.putIfAbsent(student.getPersonID(), new ArrayList<>());
-            studentEnrollments.get(student.getPersonID()).add(course);
-            System.out.println("Successfully enrolled " + student.getPersonName() + " in " + course.getcourseName());
+            studentEnrollments.putIfAbsent(student.getId(), new ArrayList<>());
+            studentEnrollments.get(student.getId()).add(course);
+            System.out.println("Successfully enrolled " + student.getName() + " in " + course.getCourseName());
         } else {
             System.out.println("Enrollment failed. Invalid student or course.");
         }
     }
 
     @Override
-    public void enrollCoursesByStudentId(String studentId, String[] courseIds) {
+    public void enrollCoursesByStudentId(int studentId, int[] courseIds) {
         if (studentService != null && courseService != null) {
             Student student = studentService.getStudentById(studentId);
             if (student != null) {
-                for (String courseId : courseIds) {
-                    Course course = courseService.getCourseById(courseId);
+                for (int courseIndex : courseIds) {
+                    Course course = courseService.getCourseByIndex(courseIndex);
                     if (course != null) {
                         enrollCourse(student, course);
                     } else {
-                        System.out.println("Course with ID " + courseId + " not found.");
+                        System.out.println("Course with index " + courseIndex + " not found.");
                     }
                 }
             } else {
@@ -56,13 +56,13 @@ public class EnrollmentServiceImpl implements IEnrollmentService {
     @Override
     public void displayStudentCourses(Student student) {
         if (student != null) {
-            System.out.println("\nCourses for " + student.getPersonName() + ":");
-            List<Course> enrolledCourses = studentEnrollments.get(student.getPersonID());
+            System.out.println("\nCourses for " + student.getName() + ":");
+            List<Course> enrolledCourses = studentEnrollments.get(student.getId());
             if (enrolledCourses == null || enrolledCourses.isEmpty()) {
                 System.out.println("No courses enrolled.");
             } else {
                 for (Course course : enrolledCourses) {
-                    System.out.println("- " + course.getcourseID() + ": " + course.getcourseName());
+                    System.out.println("- " + course.getCourseCode() + ": " + course.getCourseName());
                 }
             }
         }

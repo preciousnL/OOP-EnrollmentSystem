@@ -12,10 +12,10 @@ public class CampusRegistrar {
     }
 
     public void saveStudent(Student student) {
-        registration.saveStudent(student);
+        registration.addStudent(student);
     }
 
     public void displayAllCourses() {
-        courseRegistration.displayAll();
+        courseRegistration.displayAvailableCourses();
     }
 }

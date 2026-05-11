@@ -20,7 +20,7 @@ public class InstructorServiceImpl implements IInstructorService {
         }
         System.out.println("\nInstructors:");
         for (Instructor instructor : instructors) {
-            System.out.printf("ID: %s, Name: %s\n", instructor.getPersonID(), instructor.getPersonName());
+            System.out.printf("ID: %s, Name: %s\n", instructor.getId(), instructor.getName());
         }
     }
 
@@ -35,9 +35,9 @@ public class InstructorServiceImpl implements IInstructorService {
     }
 
     @Override
-    public Instructor getInstructorById(String id) {
+    public Instructor getInstructorById(int id) {
         for (Instructor instructor : instructors) {
-            if (instructor.getPersonID() != null && instructor.getPersonID().equals(id)) {
+            if (instructor.getId() == id) {
                 return instructor;
             }
         }

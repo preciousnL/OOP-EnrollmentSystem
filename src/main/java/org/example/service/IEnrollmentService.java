@@ -6,7 +6,7 @@ import org.example.model.Student;
 public interface IEnrollmentService {
     void enrollCourse(Student student, Course course);
 
-    void enrollCoursesByStudentId(String studentId, String[] courseIds);
+    void enrollCoursesByStudentId(int studentId, int[] courseIds);
 
     void displayStudentCourses(Student student);
 }

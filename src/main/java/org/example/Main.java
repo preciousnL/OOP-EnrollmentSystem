@@ -1,13 +1,20 @@
 package org.example;
 
+import java.util.Scanner;
+
+import org.example.exceptions.SectionFullException;
 import org.example.model.Course;
+import org.example.model.Department;
 import org.example.model.Instructor;
+import org.example.model.Section;
 import org.example.model.Student;
 import org.example.service.CourseRegistration;
+import org.example.service.DepartmentRegistration;
+import org.example.service.EnrollmentServiceImpl;
+import org.example.service.InstructorServiceImpl;
+import org.example.service.SectionRegistration;
 import org.example.service.StudentRegistration;
 import org.example.service.TuitionFeePayment;
-
-import java.util.Scanner;
 
 public class Main {
 
@@ -15,6 +22,10 @@ public class Main {
         StudentRegistration studentRegistration = new StudentRegistration();
         CourseRegistration courseRegistration = new CourseRegistration();
         TuitionFeePayment tuitionFeePayment = new TuitionFeePayment();
+        InstructorServiceImpl instructorService = new InstructorServiceImpl();
+        DepartmentRegistration departmentService = new DepartmentRegistration();
+        SectionRegistration sectionService = new SectionRegistration();
+        EnrollmentServiceImpl enrollmentService = new EnrollmentServiceImpl();
         Scanner scan = new Scanner(System.in);
 
         while (true) {
@@ -35,13 +46,12 @@ public class Main {
             int type = scan.nextInt();
 
             if (type == 1) {
-                Student s = new Student();
-                s.mainTask();
+                System.out.println("\nStudent Portal Selected.");
             } else if (type == 2){
-                Instructor i = new Instructor();
-                i.mainTask();
+                System.out.println("\nInstructor Portal Selected.");
             } else {
-                System.out.println("\nInvalid input. Please type Yes or No only.");
+                System.out.println("\nInvalid input.");
+                continue;
             }
 
             while (true){
@@ -64,16 +74,16 @@ public class Main {
                             System.out.println("\n============ REGISTRATION ============");
                             System.out.println("1 - Student");
                             System.out.println("2 - Course");
-                            System.out.println("3 - Back to Home");
+                            System.out.println("3 - Instructor");
+                            System.out.println("4 - Department");
+                            System.out.println("5 - Section");
+                            System.out.println("6 - Back to Home");
                             System.out.println("======================================");
                             System.out.print("\nWhat do you want to register?: ");
                             ch = scan.nextInt();
                             scan.nextLine();
 
                             if (ch == 1) {
-                                Student s = new Student();
-                                s.mainTask();
-
                                 sID = -1;
                                 boolean validId = false;
                                 while (!validId) {
@@ -130,7 +140,7 @@ public class Main {
                                             System.out.println("Course already added.");
                                             i--;
                                         } else {
-                                            p.enrollCourse(selectedCourse);
+                                            p.getCourses().add(selectedCourse);
                                             System.out.println("Course added successfully.");
                                         }
 
@@ -261,6 +271,44 @@ public class Main {
                                 courseRegistration.addCourse(c);
 
                             } else if (ch == 3) {
+                                System.out.print("\nInstructor ID: ");
+                                int instID = scan.nextInt();
+                                scan.nextLine();
+
+                                System.out.print("Instructor Name: ");
+                                String instName = scan.nextLine();
+
+                                Instructor inst = new Instructor();
+                                inst.setId(instID);
+                                inst.setName(instName);
+                                instructorService.addInstructor(inst);
+
+                            } else if (ch == 4) {
+                                System.out.print("\nDepartment Code: ");
+                                String deptCode = scan.nextLine();
+
+                                System.out.print("Department Name: ");
+                                String deptName = scan.nextLine();
+
+                                Department dept = new Department();
+                                dept.setDepartmentCode(deptCode);
+                                dept.setDepartmentName(deptName);
+                                departmentService.addDepartment(dept);
+
+                            } else if (ch == 5) {
+                                System.out.print("\nSection Name: ");
+                                String sectName = scan.nextLine();
+
+                                System.out.print("Max Capacity: ");
+                                int maxCap = scan.nextInt();
+                                scan.nextLine();
+
+                                Section sect = new Section();
+                                sect.setSectionName(sectName);
+                                sect.setMaxCapacity(maxCap);
+                                sectionService.addSection(sect);
+
+                            } else if (ch == 6) {
                                 break;
                             } else {
                                 System.out.println("Invalid input. Try again.");
@@ -273,7 +321,10 @@ public class Main {
                             System.out.println("\n============== DISPLAY ===============");
                             System.out.println("1 - Student");
                             System.out.println("2 - Course");
-                            System.out.println("3 - Back to Home");
+                            System.out.println("3 - Instructor");
+                            System.out.println("4 - Department");
+                            System.out.println("5 - Section");
+                            System.out.println("6 - Back to Home");
                             System.out.println("======================================");
                             System.out.print("\nWhat do you want to check?: ");
                             ch = scan.nextInt();
@@ -303,6 +354,12 @@ public class Main {
                                     }
                                 }
                             } else if (ch == 3) {
+                                instructorService.displayInstructor();
+                            } else if (ch == 4) {
+                                departmentService.displayDepartments();
+                            } else if (ch == 5) {
+                                sectionService.displaySections();
+                            } else if (ch == 6) {
                                 break;
                             } else {
                                 System.out.println("\n=======================================");
@@ -316,7 +373,10 @@ public class Main {
                             System.out.println("\n=============== UPDATE ===============");
                             System.out.println("1 - Student");
                             System.out.println("2 - Course");
-                            System.out.println("3 - Back to Home");
+                            System.out.println("3 - Instructor");
+                            System.out.println("4 - Department");
+                            System.out.println("5 - Section");
+                            System.out.println("6 - Back to Home");
                             System.out.println("======================================");
                             System.out.print("\nWhat do you want to update?: ");
                             ch = scan.nextInt();
@@ -327,6 +387,12 @@ public class Main {
                             } else if (ch == 2) {
                                 courseRegistration.updateCourse();
                             } else if (ch == 3) {
+                                instructorService.updateInstructor();
+                            } else if (ch == 4) {
+                                departmentService.updateDepartment();
+                            } else if (ch == 5) {
+                                sectionService.updateSection();
+                            } else if (ch == 6) {
                                 break;
                             } else {
                                 System.out.println("Invalid input. Try again.");
@@ -339,7 +405,10 @@ public class Main {
                             System.out.println("\n=============== REMOVE ===============");
                             System.out.println("1 - Student");
                             System.out.println("2 - Course");
-                            System.out.println("3 - Back to Home");
+                            System.out.println("3 - Instructor");
+                            System.out.println("4 - Department");
+                            System.out.println("5 - Section");
+                            System.out.println("6 - Back to Home");
                             System.out.println("======================================");
                             System.out.print("\nWhat do you want to remove?: ");
                             ch = scan.nextInt();
@@ -350,6 +419,12 @@ public class Main {
                             } else if (ch == 2) {
                                 courseRegistration.removeCourse();
                             } else if (ch == 3) {
+                                instructorService.removeInstructor();
+                            } else if (ch == 4) {
+                                departmentService.removeDepartment();
+                            } else if (ch == 5) {
+                                sectionService.removeSection();
+                            } else if (ch == 6) {
                                 break;
                             } else {
                                 System.out.println("Invalid input. Try again.");
@@ -362,7 +437,8 @@ public class Main {
                             System.out.println("\n============= ENROLL COURSE =============");
                             System.out.println("1 - Enroll using Student Special Number");
                             System.out.println("2 - Enroll using Student ID");
-                            System.out.println("3 - Back to Home");
+                            System.out.println("3 - Enroll in Section");
+                            System.out.println("4 - Back to Home");
                             System.out.println("=========================================");
                             System.out.print("\nWhat do you want to do?: ");
                             ch = scan.nextInt();
@@ -410,7 +486,7 @@ public class Main {
                                         System.out.println("Course already enrolled.");
                                         i--;
                                     } else {
-                                        student.enrollCourse(selectedCourse);
+                                        student.getCourses().add(selectedCourse);
                                         System.out.println("Course added successfully.");
                                     }
                                 }
@@ -452,12 +528,34 @@ public class Main {
                                         System.out.println("Course already enrolled.");
                                         i--;
                                     } else {
-                                        student.enrollCourse(selectedCourse);
+                                        student.getCourses().add(selectedCourse);
                                         System.out.println("Course added successfully.");
                                     }
                                 }
 
                             } else if (ch == 3) {
+                                System.out.print("\nEnter student special number: ");
+                                int studSpecNum = scan.nextInt();
+                                scan.nextLine();
+
+                                Student stud = studentRegistration.getStudentBySpecialNumber(studSpecNum);
+                                if (stud == null) {
+                                    System.out.println("Student not found.");
+                                    break;
+                                }
+
+                                sectionService.displaySections();
+                                System.out.print("\nEnter section special number: ");
+                                int sectNum = scan.nextInt();
+                                scan.nextLine();
+
+                                try {
+                                    sectionService.enrollStudentToSection(sectNum, stud);
+                                } catch (SectionFullException e) {
+                                    System.out.println("Error: " + e.getMessage());
+                                }
+
+                            } else if (ch == 4) {
                                 break;
                             } else {
                                 System.out.println("Invalid input. Try again.");

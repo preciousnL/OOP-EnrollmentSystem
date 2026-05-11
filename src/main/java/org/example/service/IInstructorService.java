@@ -1,7 +1,8 @@
 package org.example.service;
 
-import org.example.model.Instructor;
 import java.util.ArrayList;
+
+import org.example.model.Instructor;
 
 public interface IInstructorService {
     void addInstructor(Instructor instructor);
@@ -12,7 +13,7 @@ public interface IInstructorService {
 
     void removeInstructor();
 
-    Instructor getInstructorById(String id);
+    Instructor getInstructorById(int id);
 
     ArrayList<Instructor> getAllInstructors();
 }

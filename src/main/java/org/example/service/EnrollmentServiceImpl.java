@@ -1,11 +1,12 @@
 package org.example.service;
 
-import org.example.model.Course;
-import org.example.model.Student;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import org.example.model.Course;
+import org.example.model.Student;
 
 public class EnrollmentServiceImpl implements IEnrollmentService {
 
@@ -26,6 +27,7 @@ public class EnrollmentServiceImpl implements IEnrollmentService {
         if (student != null && course != null) {
             studentEnrollments.putIfAbsent(student.getId(), new ArrayList<>());
             studentEnrollments.get(student.getId()).add(course);
+            student.getCourses().add(course);
             System.out.println("Successfully enrolled " + student.getName() + " in " + course.getCourseName());
         } else {
             System.out.println("Enrollment failed. Invalid student or course.");

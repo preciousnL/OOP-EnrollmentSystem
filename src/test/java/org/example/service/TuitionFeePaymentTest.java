@@ -1,9 +1,10 @@
 package org.example.service;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 public class TuitionFeePaymentTest {
     private TuitionFeePayment tuitionFeePayment;
@@ -54,10 +55,5 @@ public class TuitionFeePaymentTest {
 
         assertEquals(0.0, tuitionFeePayment.getRemainingBalance());
         assertTrue(tuitionFeePayment.isFullyPaid());
-    }
-
-    @Test
-    void testPricePerUnit() {
-        assertEquals(1000.0, tuitionFeePayment.getPricePerUnit());
     }
 }

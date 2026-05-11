@@ -7,10 +7,6 @@ import org.example.model.Student;
 import org.example.exceptions.SectionFullException;
 import java.util.ArrayList;
 
-/**
- * Delegates all logic to SectionServiceImpl.
- * Kept for backward compatibility with Main.java.
- */
 public class SectionRegistration implements ISectionService {
 
     private final SectionServiceImpl impl = new SectionServiceImpl();
